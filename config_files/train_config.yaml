@@ -9,4 +9,4 @@ batch_size: 32
 train_ratio: 0.9
 # model_name can take the values "FCNetwork" and "Conv2LayersNetwork"
 model_name: "Conv2LayersNetwork"
-hidden_units: 10
+hidden_units: 50
