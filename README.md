@@ -23,7 +23,8 @@ command allows you to use the created virtual environment in a jupyter notebook.
 [`eval.ipynb`](/notebooks/eval.ipynb)
 - To monitor the loss or the accuracy of the trained model on the training set
 and the validation set, run `poetry run tensorboard --logdir=runs` or replace
-`runs` by the path specified in `train_config.yaml`
+`runs` by the path specified in
+[`train_config.yaml`](/config_files/train_config.yaml)
 
 ## Models implemented
 2 models have been implemented:
@@ -31,7 +32,7 @@ and the validation set, run `poetry run tensorboard --logdir=runs` or replace
   as `FCNetwork`
 - a convolutional model with 2 convolutional layers (with BatchNorm, ReLU and
   MaxPooling) denoted as Conv2LayersNetwork
-In `train_config.yaml`, it is possible to modify the number of hidden units for
+In [`train_config.yaml`](/config_files/train_config.yaml), it is possible to modify the number of hidden units for
 these layers. There is currently only one value to define the different hidden
 units in these models.
 
@@ -50,7 +51,7 @@ units in these models.
   training process.
 
 ## Evaluation process
-- The current evaluation process looks at the checkpoints present in the `models` folder (or different if specified in `train_config.yaml`).
+- The current evaluation process looks at the checkpoints present in the `models` folder (or different if specified in [`eval_config.yaml`](/config_files/eval_config.yaml)).
 - For each model, we run the entire test set and get the accuracy of the model.
   Additional plots (confusion matrices and misclassified instances) are visible
   in the notebook [`eval.ipynb`]('/notebooks/eval.ipynb').
