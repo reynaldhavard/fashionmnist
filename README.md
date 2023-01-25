@@ -46,14 +46,14 @@ units in these models.
   evaluate on the validation set and we save the model which had the lowest loss
   on the validation set. The metrics are saved and can be monitored with
   Tensorboard.
-- The notebook `train.ipynb` provides some additional information to the
+- The notebook [`train.ipynb`](/notebooks/train.ipynb) provides some additional information to the
   training process.
 
 ## Evaluation process
 - The current evaluation process looks at the checkpoints present in the `models` folder (or different if specified in `train_config.yaml`).
 - For each model, we run the entire test set and get the accuracy of the model.
   Additional plots (confusion matrices and misclassified instances) are visible
-  in the notebook `eval.ipynb`.
+  in the notebook [`eval.ipynb`]('/notebooks/eval.ipynb').
 
 ## Next steps
 Some ideas for the next steps:
