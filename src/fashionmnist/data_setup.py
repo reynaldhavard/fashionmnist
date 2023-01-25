@@ -3,6 +3,9 @@ from torch.utils.data import Dataset, DataLoader, random_split
 
 
 def load_original_data(path):
+    """
+    Get data from torchvision API.
+    """
     train_data = datasets.FashionMNIST(path, train=True, download=True)
     test_data = datasets.FashionMNIST(path, train=False, download=True)
 
@@ -12,6 +15,9 @@ def load_original_data(path):
 
 
 def create_random_split_train_val(train_data, train_ratio):
+    """
+    Split the train_data into train and validation data
+    """
     train_size = int(train_ratio * len(train_data))
     val_size = len(train_data) - train_size
     train_data, val_data = random_split(train_data, [train_size, val_size])
@@ -36,6 +42,10 @@ class FashionMNISTDataset(Dataset):
 
 
 def create_dataloaders(data_path, train_ratio, transforms, batch_size):
+    """
+    Load the original data, split the train data into train and validation
+    data, create FashionMNISTDataset instances and pass them to DataLoaders
+    """
     train_data, test_data, class_names = load_original_data(data_path)
     train_data, val_data = create_random_split_train_val(
         train_data, train_ratio

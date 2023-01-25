@@ -64,6 +64,9 @@ class Conv2LayersNetwork(nn.Module):
 
 
 def get_model(model_name, output_shape, hidden_units, device):
+    """
+    Create an instance of either a FCNetwork or a Conv2LayersNetwork
+    """
     if model_name == "FCNetwork":
         model = FCNetwork(
             input_shape=28 * 28,

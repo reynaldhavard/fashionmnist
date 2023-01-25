@@ -18,6 +18,13 @@ from fashionmnist.eval_utils import (
 def eval_model(
     model_file, dataloader, class_names, save_model_path, device, plot=False
 ):
+    """
+    - Load a checkpoint and instantiate model with it.
+    - Get predictions on the dataloader using the model.
+    - Compute the accuracy based on groundtruth and predictions.
+    - If plot is set to True, plot the confusion matrix and some incorrect
+    predictions.
+    """
     print(f"Evaluating {model_file}")
     checkpoint = load_checkpoint(os.path.join(save_model_path, model_file))
 
@@ -40,13 +47,16 @@ def eval_model(
 
 
 if __name__ == "__main__":
+    # Load config file
     config = get_config("config_files/eval_config.yaml")
 
+    # Set device to GPU or CPU
     if torch.cuda.is_available() and config["allow_gpu"]:
         device = "cuda"
     else:
         device = "cpu"
 
+    # Get test dataloader and class names
     _, _, test_dataloader, class_names = create_dataloaders(
         data_path=config["data_path"],
         train_ratio=0.5,
@@ -54,11 +64,14 @@ if __name__ == "__main__":
         batch_size=1,
     )
 
+    # Get a list of all the checkpoints
     model_files = [
         f
         for f in os.listdir(config["save_model_path"])
         if os.path.isfile(os.path.join(config["save_model_path"], f))
     ]
+
+    # Evaluate each checkpoint
     for model_file in model_files:
         eval_model(
             model_file=model_file,

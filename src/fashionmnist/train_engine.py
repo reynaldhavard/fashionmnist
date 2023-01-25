@@ -4,14 +4,24 @@ from fashionmnist.utils import Writer, ModelCheckpoint
 
 
 def get_loss_fn():
+    """
+    Return the Cross Entropy Loss function from PyTorch
+    """
     return torch.nn.CrossEntropyLoss()
 
 
 def get_optimizer(model, learning_rate):
+    """
+    Initialize a Adam optimizer
+    """
     return torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 
 def train_step(model, dataloader, loss_fn, optimizer, device):
+    """
+    Set the model to training mode, iterate through the dataloader, compute the
+    loss and back-propagate for each batch, compute the accuracy.
+    """
     model.train()
 
     train_loss, train_acc = 0, 0
@@ -38,6 +48,10 @@ def train_step(model, dataloader, loss_fn, optimizer, device):
 
 
 def val_test_step(model, dataloader, loss_fn, device):
+    """
+    Set the model to eval mode, iterate through the dataloader in inference
+    mode, get the loss and the accuracy.
+    """
     model.eval()
     test_loss, test_acc = 0, 0
     with torch.inference_mode():
@@ -68,6 +82,13 @@ def train(
     writer_path,
     extra_info,
 ):
+    """
+    - Initialize a ModelCheckpoint instance and a Writer instance.
+    - Train the model for epochs epochs.
+    - Store the loss and the accuracy for the train and the validation sets in
+    a dictionary and using the Writer so it can be visualized with Tensorboard.
+    - Save the model with the lowest validation loss using the ModelCheckpoint.
+    """
     results = {
         "train_loss": [],
         "train_acc": [],

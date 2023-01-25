@@ -8,14 +8,19 @@ from fashionmnist.train_engine import get_loss_fn, get_optimizer, train
 
 
 if __name__ == "__main__":
+    # For reproducibility
     torch.manual_seed(0)
+
+    # Load config file
     config = get_config("config_files/train_config.yaml")
 
+    # Set device to GPU or CPU
     if torch.cuda.is_available() and config["allow_gpu"]:
         device = "cuda"
     else:
         device = "cpu"
 
+    # Get dataloaders and class names
     (
         train_dataloader,
         val_dataloader,
@@ -28,6 +33,7 @@ if __name__ == "__main__":
         batch_size=config["batch_size"],
     )
 
+    # Initialize model, loss and optimizer
     model = get_model(
         model_name=config["model_name"],
         output_shape=len(class_names),
@@ -37,6 +43,7 @@ if __name__ == "__main__":
     loss_fn = get_loss_fn()
     optimizer = get_optimizer(model, learning_rate=config["learning_rate"])
 
+    # Train the model, save the best model and store training metrics
     results = train(
         model,
         train_dataloader,

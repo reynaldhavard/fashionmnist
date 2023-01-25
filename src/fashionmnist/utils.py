@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 
 
 def get_extended_model_name(model_name, extra_info):
+    """
+    Create an extended name based on extra information and adding the .pth
+    extension
+    """
     if extra_info is None:
         name = f"{model_name}.pth"
     else:
@@ -67,6 +71,9 @@ def load_checkpoint(model_path):
 
 
 def plot_training_curves(results):
+    """
+    Plot the train loss, the val loss, the train accuracy and val accuracy.
+    """
     epochs = list(range(len(results["train_loss"])))
 
     fig, axes = plt.subplots(1, 2, figsize=(15, 7))

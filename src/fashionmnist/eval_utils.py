@@ -8,6 +8,10 @@ import numpy as np
 
 
 def get_predictions(model, dataloader, device):
+    """
+    Run the model on all the data in the dataloader, return the groundtruth and
+    the predictions.
+    """
     model.eval()
     y_true = []
     y_pred = []
@@ -23,6 +27,10 @@ def get_predictions(model, dataloader, device):
 
 
 def get_incorrect_predictions(model, dataloader, device, n_predictions=None):
+    """
+    Run the model on all the data until we reach n_predictions incorrect
+    predictions.
+    """
     if n_predictions is None:
         n_predictions = len(dataloader)
 
@@ -50,6 +58,9 @@ def get_incorrect_predictions(model, dataloader, device, n_predictions=None):
 def plot_incorrect_predictions(
     model, dataloader, class_names, device, n_predictions=None
 ):
+    """
+    Plot n_predictions incorrect predictions.
+    """
     if n_predictions is None:
         n_predictions = len(dataloader)
     n_predictions = int(np.sqrt(n_predictions)) ** 2
@@ -73,6 +84,9 @@ def plot_incorrect_predictions(
 
 
 def get_confusion_matrix(y_true, y_pred, class_names):
+    """
+    Generate a confusion matrix based on groundtruth and predictions.
+    """
     cf_matrix = confusion_matrix(y_true, y_pred)
     df_cm = pd.DataFrame(
         cf_matrix / np.sum(cf_matrix) * 10,
@@ -84,6 +98,9 @@ def get_confusion_matrix(y_true, y_pred, class_names):
 
 
 def plot_confusion_matrix(y_true, y_pred, class_names):
+    """
+    Plot a confusion matrix based on groundtruth and predictions.
+    """
     df_cm = get_confusion_matrix(y_true, y_pred, class_names)
 
     plt.figure(figsize=(10, 5))
@@ -93,4 +110,7 @@ def plot_confusion_matrix(y_true, y_pred, class_names):
 
 
 def get_accuracy(y_true, y_pred):
+    """
+    Calculate accuracy based on groundtruth and predictions.
+    """
     return accuracy_score(y_true, y_pred)
