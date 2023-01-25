@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fashionmnist-measurableenergy"
+name = "fashionmnist"
 version = "0.1.0"
 description = ""
 authors = ["Reynald Havard <reynald.havard@gmail.com>"]
@@ -19,6 +19,7 @@ torchvision = "^0.14.1"
 torchaudio = "^0.13.1"
 tensorboard = "^2.11.2"
 jupyterlab = "^3.5.3"
+tqdm = "^4.64.1"
 
 [tool.poetry.dev-dependencies]
 
