@@ -1,0 +1,4 @@
+---
+save_model_path: "models"
+data_path: "data"
+allow_gpu: true
