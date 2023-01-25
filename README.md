@@ -17,10 +17,12 @@ command allows you to use the created virtual environment in a jupyter notebook.
 - To start Jupyter Lab server, run: `poetry run jupyter lab`
 - In order to run the training process, run:
 `poetry run python src/fashionmnist/train.py` or have a look at the notebook
-[`train.ipynb`](/notebooks/train.ipynb)
+[`train.ipynb`](/notebooks/train.ipynb) (don't forget to select the
+`fashionmnist` kernel before executing it)
 - In order to run the evaluation process, run
 `poetry run python src/fashionmnist/eval.py` or have a look at the notebook
-[`eval.ipynb`](/notebooks/eval.ipynb)
+[`eval.ipynb`](/notebooks/eval.ipynb)(don't forget to select the `fashionmnist`
+kernel before executing it)
 - To monitor the loss or the accuracy of the trained model on the training set
 and the validation set, run `poetry run tensorboard --logdir=runs` or replace
 `runs` by the path specified in
