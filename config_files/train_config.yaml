@@ -1,0 +1,12 @@
+---
+save_model_path: "models"
+writer_path: "runs"
+data_path: "data"
+allow_gpu: true
+epochs: 10
+learning_rate: 0.001
+batch_size: 32
+train_ratio: 0.9
+# model_name can take the values "FCNetwork" and "Conv2LayersNetwork"
+model_name: "Conv2LayersNetwork"
+hidden_units: 10
